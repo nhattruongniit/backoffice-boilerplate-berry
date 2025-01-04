@@ -1,6 +1,18 @@
 import '@mui/material/styles';
 
 declare module '@mui/material/styles' {
+  interface Theme {
+    customShadows: {
+      z1: string;
+    };
+  }
+
+  interface ThemeOptions {
+    customShadows?: {
+      z1?: string;
+    };
+  }
+
   interface TypeText {
     dark: string;
     hint: string;
@@ -9,11 +21,9 @@ declare module '@mui/material/styles' {
   interface TypographyVariants {
     mediumAvatar: React.CSSProperties;
     commonAvatar: React.CSSProperties;
-  }
-
-  interface TypographyVariantsOptions {
-    mediumAvatar?: React.CSSProperties;
-    commonAvatar?: React.CSSProperties;
+    largeAvatar: React.CSSProperties;
+    subMenuCaption: React.CSSProperties;
+    menuCaption: React.CSSProperties;
   }
 
   interface PaletteOptions {

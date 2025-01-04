@@ -4,7 +4,6 @@ import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 import {
   ErrorComponent,
   RefineSnackbarProvider,
-  ThemedLayoutV2,
   useNotificationProvider,
 } from "@refinedev/mui";
 
@@ -36,82 +35,82 @@ import ThemeCustomization from "@/themes";
 function App() {
   return (
     <BrowserRouter>
-      <ThemeCustomization>
-        <RefineKbarProvider>
-          <AppSettingContextProvider>
-            <CssBaseline />
-            <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
-            <RefineSnackbarProvider>
-              <Refine
-                dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
-                notificationProvider={useNotificationProvider}
-                routerProvider={routerBindings}
-                resources={[
-                  {
-                    name: "blog_posts",
-                    list: "/blog-posts",
-                    create: "/blog-posts/create",
-                    edit: "/blog-posts/edit/:id",
-                    show: "/blog-posts/show/:id",
-                    meta: {
-                      canDelete: true,
-                    },
-                  },
-                  {
-                    name: "categories",
-                    list: "/categories",
-                    create: "/categories/create",
-                    edit: "/categories/edit/:id",
-                    show: "/categories/show/:id",
-                    meta: {
-                      canDelete: true,
-                    },
-                  },
-                ]}
-                options={{
-                  syncWithLocation: true,
-                  warnWhenUnsavedChanges: true,
-                  useNewQueryKeys: true,
-                  projectId: "rlmEww-FQCHXm-WXAzXe",
-                  // title: { text: "Refine Project", icon: <AppIcon /> },
-                }}
-              >
-                <Routes>
-                  <Route
-                    element={
-                      <MainLayout>
-                        <Outlet />
-                      </MainLayout>
-                    }
+      <AppSettingContextProvider>
+          <ThemeCustomization>
+            <RefineKbarProvider>
+                <CssBaseline />
+                <GlobalStyles styles={{ html: { WebkitFontSmoothing: "auto" } }} />
+                <RefineSnackbarProvider>
+                  <Refine
+                    dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
+                    notificationProvider={useNotificationProvider}
+                    routerProvider={routerBindings}
+                    resources={[
+                      {
+                        name: "blog_posts",
+                        list: "/blog-posts",
+                        create: "/blog-posts/create",
+                        edit: "/blog-posts/edit/:id",
+                        show: "/blog-posts/show/:id",
+                        meta: {
+                          canDelete: true,
+                        },
+                      },
+                      {
+                        name: "categories",
+                        list: "/categories",
+                        create: "/categories/create",
+                        edit: "/categories/edit/:id",
+                        show: "/categories/show/:id",
+                        meta: {
+                          canDelete: true,
+                        },
+                      },
+                    ]}
+                    options={{
+                      syncWithLocation: true,
+                      warnWhenUnsavedChanges: true,
+                      useNewQueryKeys: true,
+                      projectId: "rlmEww-FQCHXm-WXAzXe",
+                      // title: { text: "Refine Project", icon: <AppIcon /> },
+                    }}
                   >
-                    <Route
-                      index
-                      element={<NavigateToResource resource="blog_posts" />}
-                    />
-                    <Route path="/blog-posts">
-                      <Route index element={<BlogPostList />} />
-                      <Route path="create" element={<BlogPostCreate />} />
-                      <Route path="edit/:id" element={<BlogPostEdit />} />
-                      <Route path="show/:id" element={<BlogPostShow />} />
-                    </Route>
-                    <Route path="/categories">
-                      <Route index element={<CategoryList />} />
-                      <Route path="create" element={<CategoryCreate />} />
-                      <Route path="edit/:id" element={<CategoryEdit />} />
-                      <Route path="show/:id" element={<CategoryShow />} />
-                    </Route>
-                    <Route path="*" element={<ErrorComponent />} />
-                  </Route>
-                </Routes>
+                    <Routes>
+                      <Route
+                        element={
+                          <MainLayout>
+                            <Outlet />
+                          </MainLayout>
+                        }
+                      >
+                        <Route
+                          index
+                          element={<NavigateToResource resource="blog_posts" />}
+                        />
+                        <Route path="/blog-posts">
+                          <Route index element={<BlogPostList />} />
+                          <Route path="create" element={<BlogPostCreate />} />
+                          <Route path="edit/:id" element={<BlogPostEdit />} />
+                          <Route path="show/:id" element={<BlogPostShow />} />
+                        </Route>
+                        <Route path="/categories">
+                          <Route index element={<CategoryList />} />
+                          <Route path="create" element={<CategoryCreate />} />
+                          <Route path="edit/:id" element={<CategoryEdit />} />
+                          <Route path="show/:id" element={<CategoryShow />} />
+                        </Route>
+                        <Route path="*" element={<ErrorComponent />} />
+                      </Route>
+                    </Routes>
 
-                <RefineKbar />
-                <UnsavedChangesNotifier />
-                <DocumentTitleHandler />
-              </Refine>
-            </RefineSnackbarProvider>
-          </AppSettingContextProvider>
-        </RefineKbarProvider>
-      </ThemeCustomization>
+                    <RefineKbar />
+                    <UnsavedChangesNotifier />
+                    <DocumentTitleHandler />
+                  </Refine>
+                </RefineSnackbarProvider>
+            </RefineKbarProvider>
+          </ThemeCustomization>
+        </AppSettingContextProvider>
     </BrowserRouter>
   );
 }

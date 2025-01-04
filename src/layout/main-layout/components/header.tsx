@@ -21,6 +21,7 @@ import Notification from '@/components/notification/notification';
 import MobileHambuger from '@/components/mobile-hambuger';
 import FullScreen from '@/components/fullscreen';
 import Profile from '@/components/profile/profile';
+import ThemeModeSection from '@/components/theme-mode';
 
 // context
 import { useAppSetting } from '@/contexts/app-setting';
@@ -28,7 +29,7 @@ import { useAppSetting } from '@/contexts/app-setting';
 const Header = () => {
     const theme = useTheme();
     const downMD = useMediaQuery(theme.breakpoints.down('md'));
-    const { mode } = useAppSetting();
+    const { mode, handlerDrawerOpen } = useAppSetting();
 
     return (
       <>
@@ -53,7 +54,7 @@ const Header = () => {
                 color: mode === ThemeMode.DARK ? 'secondary.light' : 'secondary.light'
               }
             }}
-            // onClick={() => handlerDrawerOpen(!drawerOpen)}
+            onClick={handlerDrawerOpen}
             color="inherit"
           >
             <MenuIcon />
@@ -76,6 +77,11 @@ const Header = () => {
         {/* full sceen toggler */}
         <Box sx={{ display: { xs: 'none', lg: 'block' } }}>
           <FullScreen />
+        </Box>
+
+        {/* theme mode toggler */}
+        <Box sx={{ display: { xs: 'none', lg: 'block' } }}>
+          <ThemeModeSection />
         </Box>
 
         {/* profile */}

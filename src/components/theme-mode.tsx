@@ -8,25 +8,19 @@ import Tooltip from '@mui/material/Tooltip';
 import { ThemeMode } from '@/configs';
 
 // mui icon
-import FullscreenIcon from '@mui/icons-material/Fullscreen';
-import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
+import DarkModeOutlined from "@mui/icons-material/DarkModeOutlined";
+import LightModeOutlined from "@mui/icons-material/LightModeOutlined";
 
-const FullScreen = () => {
+// contexts
+import { useAppSetting } from '@/contexts/app-setting';
+
+const ThemeModeSection = () => {
+    const { mode, onChangeMode } = useAppSetting();
     const theme = useTheme();
-
-    const [open, setOpen] = useState(false);
-    const handleToggle = useCallback(() => {
-      setOpen((prevOpen) => !prevOpen);
-      if (document && !document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-      } else if (document.exitFullscreen) {
-        document.exitFullscreen();
-      }
-    }, []);
 
     return (
         <Box sx={{ ml: 2 }}>
-          <Tooltip title={open ? 'Exit Fullscreen' : 'Fullscreen'}>
+          <Tooltip title={mode === ThemeMode.DARK ? 'Light Mode' : 'Dark Mode'}>
             <Avatar
                 variant="rounded"
                 sx={{
@@ -43,15 +37,14 @@ const FullScreen = () => {
                         color: 'primary.light'
                     }
                 }}
-                aria-controls={open ? 'menu-list-grow' : undefined}
-                onClick={handleToggle}
+                onClick={() => onChangeMode(mode === ThemeMode.DARK ? ThemeMode.LIGHT : ThemeMode.DARK)}
                 color="inherit"
             >
-              {open ? <FullscreenExitIcon /> : <FullscreenIcon />}
+              {mode === ThemeMode.DARK ? <LightModeOutlined /> : <DarkModeOutlined />}
             </Avatar>
           </Tooltip>
         </Box>
     );
 };
 
-export default FullScreen;
+export default ThemeModeSection;

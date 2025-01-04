@@ -28,7 +28,6 @@ declare module '@mui/material/styles' {
 
 export default function ThemeCustomization({ children }: React.PropsWithChildren) {
     const { borderRadius, fontFamily, mode, outlinedFilled, presetColor, themeDirection } = useAppSetting();
-
     const theme = useMemo(() => Palette(mode as PaletteMode, presetColor), [mode, presetColor]);
 
     const themeTypography = useMemo(() => Typography(theme, borderRadius, fontFamily), [theme, borderRadius, fontFamily]);

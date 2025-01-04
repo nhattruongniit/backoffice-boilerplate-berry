@@ -26,13 +26,13 @@ const config = {
     presetColor: 'default',
     i18n: 'en',
     themeDirection: ThemeDirection.LTR,
-    container: false
+    container: false,
+    drawerOpen: true
 };
 
 // theme constant
 export const gridSpacing = 3;
 export const drawerWidth = 260;
 export const appDrawerWidth = 320;
-
 
 export default config;

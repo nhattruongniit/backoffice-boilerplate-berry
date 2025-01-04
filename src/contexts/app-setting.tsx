@@ -1,10 +1,6 @@
-import { ThemeProvider } from "@mui/material/styles";
-import { RefineThemes } from "@refinedev/mui";
 import React, {
   createContext,
   PropsWithChildren,
-  useEffect,
-  useState,
 } from "react";
 
 import defaultConfig from '@/configs';
@@ -15,7 +11,8 @@ const initialState = {
   onChangeMenuOrientation: () => {},
   onChangeMiniDrawer: () => {},
   onChangeMode: () => {},
-  onReset: () => {}
+  onReset: () => {},
+  handlerDrawerOpen: () => {}
 };
 
 type AppSettingContextType = {
@@ -28,10 +25,12 @@ type AppSettingContextType = {
   outlinedFilled: boolean;
   presetColor: string;
   themeDirection: string;
+  drawerOpen: boolean;
   onChangeMenuOrientation: (menuOrientation: string) => void;
   onChangeMiniDrawer: (miniDrawer: boolean) => void;
   onChangeMode: (mode: string) => void;
   onReset: () => void;
+  handlerDrawerOpen: () => void;
 };
 
 export const AppSettingContext = createContext<AppSettingContextType>(initialState as AppSettingContextType);
@@ -49,6 +48,7 @@ export const AppSettingContextProvider: React.FC<PropsWithChildren> = ({
     outlinedFilled: initialState.outlinedFilled,
     presetColor: initialState.presetColor,
     themeDirection: initialState.themeDirection,
+    drawerOpen: initialState.drawerOpen
   });
 
   const onChangeMenuOrientation = (menuOrientation: string) => {
@@ -60,21 +60,25 @@ export const AppSettingContextProvider: React.FC<PropsWithChildren> = ({
 
   const onChangeMiniDrawer = (miniDrawer: boolean) => {
     setConfig({
-        ...config,
-        miniDrawer
+      ...config,
+      miniDrawer
     });
   };
 
   const onChangeMode = (mode: string) => {
     setConfig({
-        ...config,
-        mode
+      ...config,
+      mode
     });
   };
 
   const onReset = () => {
-      setConfig({ ...defaultConfig });
+    setConfig({ ...defaultConfig });
   };
+
+  const handlerDrawerOpen = () => {
+    setConfig(prevState => ({ ...prevState, drawerOpen: !prevState.drawerOpen }));
+  }
 
   return (
     <AppSettingContext.Provider
@@ -83,7 +87,8 @@ export const AppSettingContextProvider: React.FC<PropsWithChildren> = ({
         onChangeMenuOrientation,
         onChangeMiniDrawer,
         onChangeMode,
-        onReset
+        onReset,
+        handlerDrawerOpen
       }}
     >
       {children}

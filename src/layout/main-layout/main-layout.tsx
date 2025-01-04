@@ -24,7 +24,15 @@ function MainLayout({ children }: MainLayoutProps) {
   const { palette, transitions, breakpoints } = useTheme();
   const downMD = useMediaQuery(breakpoints.down('md'));
 
-  const { container, borderRadius, miniDrawer, menuOrientation } = useAppSetting();
+  const { container, borderRadius, miniDrawer, menuOrientation, drawerOpen, handlerDrawerOpen } = useAppSetting();
+
+  React.useEffect(() => {
+    handlerDrawerOpen();
+  }, [miniDrawer]);
+
+  React.useEffect(() => {
+      downMD && handlerDrawerOpen();
+  }, [downMD]);
 
   const isHorizontal = menuOrientation === MenuOrientation.HORIZONTAL && !downMD;
 
@@ -42,7 +50,7 @@ function MainLayout({ children }: MainLayoutProps) {
           <Sidebar />
 
           {/* main content */}
-          <MainContentStyled  {...{ borderRadius, menuOrientation, open: true, palette, transitions, breakpoints }}>
+          <MainContentStyled  {...{ borderRadius, menuOrientation, open: drawerOpen, palette, transitions, breakpoints }}>
             <Container maxWidth={container ? 'lg' : false} {...(!container && { sx: { px: { xs: 0 } } })}>
               {children}
             </Container>
