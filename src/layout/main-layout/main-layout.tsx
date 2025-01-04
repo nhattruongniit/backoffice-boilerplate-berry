@@ -1,6 +1,7 @@
 import React from 'react'
 
 // mui
+import { alpha, styled } from '@mui/material/styles';
 import { useTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -14,13 +15,14 @@ import { MenuOrientation } from '@/configs';
 import Header from './components/header';
 import Sidebar from './components/sidebar';
 
-// import MainContentStyled from './styled/main-content-styled';
+import MainContentStyled from './styled/main-content-styled';
 
 interface MainLayoutProps extends React.PropsWithChildren {}
 
+
 function MainLayout({ children }: MainLayoutProps) {
-  const theme = useTheme();
-  const downMD = useMediaQuery(theme.breakpoints.down('md'));
+  const { palette, transitions, breakpoints } = useTheme();
+  const downMD = useMediaQuery(breakpoints.down('md'));
 
   const { container, borderRadius, miniDrawer, menuOrientation } = useAppSetting();
 
@@ -40,11 +42,11 @@ function MainLayout({ children }: MainLayoutProps) {
           <Sidebar />
 
           {/* main content */}
-          {/* <MainContentStyled {...{ borderRadius, menuOrientation, open: true, theme }}> */}
+          <MainContentStyled  {...{ borderRadius, menuOrientation, open: true, palette, transitions, breakpoints }}>
             <Container maxWidth={container ? 'lg' : false} {...(!container && { sx: { px: { xs: 0 } } })}>
               {children}
             </Container>
-          {/* </MainContentStyled> */}
+          </MainContentStyled>
       </Box>
     </>
   )
