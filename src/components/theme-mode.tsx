@@ -1,7 +1,5 @@
-import { useCallback, useState } from 'react';
-
 // material-ui
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles'
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
