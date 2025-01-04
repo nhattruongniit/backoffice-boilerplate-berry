@@ -13,7 +13,7 @@ import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import Tooltip from '@mui/material/Tooltip';
+import Tooltip from '@mui/material/Tooltip'
 
 // project imports
 import Transitions from '@/components/transition';
