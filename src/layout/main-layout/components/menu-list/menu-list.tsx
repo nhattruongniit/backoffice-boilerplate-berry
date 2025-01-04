@@ -21,32 +21,11 @@ import { useAppSetting } from '@/contexts/app-setting';
 const MenuList = () => {
   const { drawerOpen } = useAppSetting();
   const downMD = useMediaQuery((theme) => theme.breakpoints.down('md'));
-
   const { menuOrientation } = useAppSetting();
-  const menuLoading = false;
   const isHorizontal = menuOrientation === MenuOrientation.HORIZONTAL && !downMD;
 
   const [selectedID, setSelectedID] = useState('');
-  const [menuItems, setMenuItems] = useState<any>({ items: [] });
-
-  useLayoutEffect(() => {
-    const isFound = menuItem.items.some((element: any) => {
-      if (element.id === 'group-widget') {
-        return true;
-      }
-      return false;
-    });
-    if (menuLoading) {
-      menuItem.items.splice(1, 0);
-      setMenuItems({ items: [...menuItem.items] });
-    } else if (!menuLoading && !isFound) {
-      menuItem.items.splice(1, 1);
-      setMenuItems({ items: [...menuItem.items] });
-    } else {
-      setMenuItems({ items: [...menuItem.items] });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [menuLoading]);
+  const [menuItems] = useState<any>(menuItem);
 
   // last menu-item to show in horizontal menu bar
   const lastItem = isHorizontal ? HORIZONTAL_MAX_ITEM : null;

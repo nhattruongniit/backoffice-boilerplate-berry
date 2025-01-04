@@ -17,6 +17,12 @@ Refine's hooks and components simplifies the development process and eliminates 
 
 ## Available Scripts
 
+### Install dependencies.
+
+```bash
+    yarn install
+```
+
 ### Running the development server.
 
 ```bash

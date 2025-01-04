@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useEffect, useRef, useState } from 'react';
 import { matchPath, useLocation } from 'react-router';
 
@@ -30,7 +29,6 @@ import Transitions from '@/components/transition';
 import { MenuOrientation, ThemeMode } from '@/configs';
 import { useAppSetting } from '@/contexts/app-setting';
 
-// horizontal-menu - wrapper
 const PopperStyled = styled(Popper)(({ theme }) => ({
   overflow: 'visible',
   zIndex: 1202,
@@ -66,8 +64,6 @@ const PopperStyled = styled(Popper)(({ theme }) => ({
     bottom: 15,
   },
 }));
-
-// ==============================|| SIDEBAR MENU LIST COLLAPSE ITEMS ||============================== //
 
 const NavCollapse = ({ menu, level, parentId }: any) => {
   const theme = useTheme();
@@ -194,7 +190,7 @@ const NavCollapse = ({ menu, level, parentId }: any) => {
   const collapseIcon = drawerOpen ? (
     <KeyboardArrowUpIcon style={{ marginTop: 'auto', marginBottom: 'auto' }} />
   ) : (
-    <KeyboardArrowRightIcon style={{ marginTop: 'auto', marginBottom: 'auto' }} />
+    <KeyboardArrowRightIcon style={{ marginTop: 'auto', marginBottom: 'auto', opacity: drawerOpen ? 1 : 0 }} />
   );
 
   const iconSelectedColor = mode === ThemeMode.DARK && drawerOpen ? 'text.primary' : 'secondary.main';
@@ -284,7 +280,11 @@ const NavCollapse = ({ menu, level, parentId }: any) => {
               </Tooltip>
             )}
 
-            {openMini || open ? collapseIcon : <KeyboardArrowDownIcon style={{ marginTop: 'auto', marginBottom: 'auto' }} />}
+            {openMini || open ? (
+              collapseIcon
+            ) : (
+              <KeyboardArrowDownIcon style={{ marginTop: 'auto', marginBottom: 'auto', opacity: drawerOpen ? 1 : 0 }} />
+            )}
 
             {!drawerOpen && (
               <Popper
@@ -419,12 +419,6 @@ const NavCollapse = ({ menu, level, parentId }: any) => {
       )}
     </>
   );
-};
-
-NavCollapse.propTypes = {
-  menu: PropTypes.object,
-  level: PropTypes.number,
-  parentId: PropTypes.string,
 };
 
 export default NavCollapse;
