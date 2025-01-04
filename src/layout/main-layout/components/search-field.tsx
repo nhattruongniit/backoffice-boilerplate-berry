@@ -10,15 +10,17 @@ import InputAdornment from '@mui/material/InputAdornment';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import Popper from '@mui/material/Popper';
 
+// mui icon
+import CloseIcon from '@mui/icons-material/Close';
+import SearchIcon from '@mui/icons-material/Search';
+import TuneIcon from '@mui/icons-material/Tune'; 
+
 // third-party
 import PopupState, { bindPopper, bindToggle } from 'material-ui-popup-state';
 
 // project imports
 import Transitions from '@/components/transition';
 import { ThemeMode } from '@/configs';
-
-// assets
-import { IconAdjustmentsHorizontal, IconSearch, IconX } from '@tabler/icons-react';
 
 const HeaderAvatar = forwardRef(({ children, ...others }: React.PropsWithChildren, ref: React.Ref<HTMLDivElement>) => {
   const theme = useTheme();
@@ -62,13 +64,13 @@ const MobileSearch = ({ value, setValue, popupState }: MobileSearchProps) => {
       placeholder="Search"
       startAdornment={
           <InputAdornment position="start">
-              <IconSearch stroke={1.5} size="16px" />
+              <SearchIcon />
           </InputAdornment>
       }
       endAdornment={
         <InputAdornment position="end">
           <HeaderAvatar>
-            <IconAdjustmentsHorizontal stroke={1.5} size="20px" />
+            <TuneIcon />
           </HeaderAvatar>
           <Box sx={{ ml: 2 }}>
             <Avatar
@@ -85,7 +87,7 @@ const MobileSearch = ({ value, setValue, popupState }: MobileSearchProps) => {
               }}
               {...bindToggle(popupState)}
             >
-              <IconX stroke={1.5} size="20px" />
+              <CloseIcon />
             </Avatar>
           </Box>
         </InputAdornment>
@@ -108,7 +110,7 @@ const SearchField = () => {
                   <>
                       <Box sx={{ ml: 2 }}>
                           <HeaderAvatar {...bindToggle(popupState)}>
-                              <IconSearch stroke={1.5} size="19.2px" />
+                              <SearchIcon />
                           </HeaderAvatar>
                       </Box>
                       <Popper
@@ -144,13 +146,13 @@ const SearchField = () => {
             placeholder="Search"
             startAdornment={
               <InputAdornment position="start">
-                  <IconSearch stroke={1.5} size="16px" />
+                  <SearchIcon />
               </InputAdornment>
             }
             endAdornment={
               <InputAdornment position="end">
                 <HeaderAvatar>
-                  <IconAdjustmentsHorizontal stroke={1.5} size="20px" />
+                  <TuneIcon />
                 </HeaderAvatar>
               </InputAdornment>
             }

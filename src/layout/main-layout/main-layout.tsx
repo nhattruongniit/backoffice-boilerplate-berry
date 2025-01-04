@@ -14,7 +14,7 @@ import { MenuOrientation } from '@/configs';
 import Header from './components/header';
 import Sidebar from './components/sidebar';
 
-import MainContentStyled from './styled/main-content-styled';
+// import MainContentStyled from './styled/main-content-styled';
 
 interface MainLayoutProps extends React.PropsWithChildren {}
 

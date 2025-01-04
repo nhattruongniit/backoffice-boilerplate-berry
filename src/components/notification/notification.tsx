@@ -18,6 +18,9 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
+// mui icon
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+
 // third-party
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
@@ -26,9 +29,6 @@ import MainCard from '@/components/card/main-card';
 import Transitions from '@/components/transition';
 import NotificationList from './notification-list';
 import { ThemeMode } from '@/configs';
-
-// assets
-import { IconBell } from '@tabler/icons-react';
 
 // notification status options
 const status = [
@@ -49,8 +49,6 @@ const status = [
         label: 'Other'
     }
 ];
-
-// ==============================|| NOTIFICATION ||============================== //
 
 const Notification = () => {
     const theme = useTheme();
@@ -106,7 +104,7 @@ const Notification = () => {
                     onClick={handleToggle}
                     color="inherit"
                 >
-                    <IconBell stroke={1.5} size="20px" />
+                    <NotificationsNoneIcon />
                 </Avatar>
             </Box>
 

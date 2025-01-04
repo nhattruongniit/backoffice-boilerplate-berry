@@ -7,8 +7,9 @@ import Box from '@mui/material/Box';
 import Tooltip from '@mui/material/Tooltip';
 import { ThemeMode } from '@/configs';
 
-// assets
-import { IconArrowsMaximize, IconArrowsMinimize } from '@tabler/icons-react';
+// mui icon
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
+import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 
 const FullScreen = () => {
     const theme = useTheme();
@@ -47,7 +48,7 @@ const FullScreen = () => {
                 onClick={handleToggle}
                 color="inherit"
             >
-              {open ? <IconArrowsMinimize /> : <IconArrowsMaximize />}
+              {open ? <FullscreenExitIcon /> : <FullscreenIcon />}
             </Avatar>
           </Tooltip>
         </Box>

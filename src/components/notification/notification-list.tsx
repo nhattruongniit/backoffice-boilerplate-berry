@@ -14,12 +14,15 @@ import ListItemText from '@mui/material/ListItemText';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
+// mui icon
+import TelegramIcon from '@mui/icons-material/Telegram';
+import EmailIcon from '@mui/icons-material/Email';
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
+
 // project-import
 import { ThemeMode } from '@/configs';
 import Chip from '@/components/chip';
-
-// assets
-import { IconBrandTelegram, IconBuildingStore, IconMailbox, IconPhoto } from '@tabler/icons-react';
 
 const ListItemWrapper = ({ children }: React.PropsWithChildren) => {
     const theme = useTheme();
@@ -96,7 +99,7 @@ const NotificationList = () => {
                                 bgcolor: theme.palette.mode === ThemeMode.DARK ? 'dark.main' : 'success.light'
                             }}
                         >
-                            <IconBuildingStore stroke={1.5} size="20px" />
+                            <StorefrontIcon />
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={<Typography variant="subtitle1">Store Verification Done</Typography>} />
@@ -130,7 +133,7 @@ const NotificationList = () => {
                                 bgcolor: theme.palette.mode === ThemeMode.DARK ? 'dark.main' : 'primary.light'
                             }}
                         >
-                            <IconMailbox stroke={1.5} size="20px" />
+                            <EmailIcon />
                         </Avatar>
                     </ListItemAvatar>
                     <ListItemText primary={<Typography variant="subtitle1">Check Your Mail.</Typography>} />
@@ -142,7 +145,7 @@ const NotificationList = () => {
                 </ListItem>
                 <Stack spacing={2} sx={containerSX}>
                     <Typography variant="subtitle2">All done! Now check your inbox as you&apos;re in for a sweet treat!</Typography>
-                    <Button variant="contained" endIcon={<IconBrandTelegram stroke={1.5} size={20} />} sx={{ width: 'min-content' }}>
+                    <Button variant="contained" endIcon={<TelegramIcon />} sx={{ width: 'min-content' }}>
                         Mail
                     </Button>
                 </Stack>
@@ -168,7 +171,7 @@ const NotificationList = () => {
                     </Typography>
                     <Card sx={{ bgcolor: theme.palette.mode === ThemeMode.DARK ? 'dark.main' : 'secondary.light' }}>
                         <Stack direction="row" spacing={2} p={2.5}>
-                            <IconPhoto stroke={1.5} size="20px" />
+                            <InsertPhotoIcon />
                             <Typography variant="subtitle1">demo.jpg</Typography>
                         </Stack>
                     </Card>

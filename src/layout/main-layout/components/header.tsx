@@ -1,5 +1,4 @@
 import { Link as RouterLink } from 'react-router';
-import { IconMenu2 } from '@tabler/icons-react';
 
 // mui
 import Avatar from '@mui/material/Avatar';
@@ -7,6 +6,9 @@ import Link from '@mui/material/Link'
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import useMediaQuery from '@mui/material/useMediaQuery';
+
+// mui icon
+import MenuIcon from '@mui/icons-material/Menu';
 
 // config
 import { DASHBOARD_PATH, ThemeMode } from '@/configs';
@@ -54,7 +56,7 @@ const Header = () => {
             // onClick={() => handlerDrawerOpen(!drawerOpen)}
             color="inherit"
           >
-            <IconMenu2 stroke={1.5} size="20px" />
+            <MenuIcon />
           </Avatar>
         </Box>
 

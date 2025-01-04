@@ -19,6 +19,11 @@ import Popper from '@mui/material/Popper';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
+// mui icon
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import SettingsIcon from '@mui/icons-material/Settings';
+import SearchIcon from '@mui/icons-material/Search';
+
 // third-party
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
@@ -27,8 +32,6 @@ import MainCard from '@/components/card/main-card';
 import Transitions from '@/components/transition';
 import { ThemeMode } from '@/configs';
 
-// assets
-import { IconLogout, IconSearch, IconSettings, IconUser } from '@tabler/icons-react';
 import { useAppSetting } from '@/contexts/app-setting';
 
 const ProfileSection = () => {
@@ -95,7 +98,7 @@ const ProfileSection = () => {
                       color="inherit"
                   />
                 }
-                label={<IconSettings stroke={1.5} size="24px" />}
+                label={<SettingsIcon />}
                 variant="outlined"
                 ref={anchorRef}
                 aria-controls={open ? 'menu-list-grow' : undefined}
@@ -145,7 +148,7 @@ const ProfileSection = () => {
                                                 placeholder="Search profile options"
                                                 startAdornment={
                                                     <InputAdornment position="start">
-                                                        <IconSearch stroke={1.5} size="16px" />
+                                                        <SearchIcon />
                                                     </InputAdornment>
                                                 }
                                                 aria-describedby="search-helper-text"
@@ -172,7 +175,7 @@ const ProfileSection = () => {
                                                         sx={{ borderRadius: `${borderRadius}px` }}
                                                     >
                                                         <ListItemIcon>
-                                                            <IconSettings stroke={1.5} size="20px" />
+                                                            <SettingsIcon />
                                                         </ListItemIcon>
                                                         <ListItemText
                                                             primary={
@@ -186,33 +189,7 @@ const ProfileSection = () => {
                                                         sx={{ borderRadius: `${borderRadius}px` }}
                                                     >
                                                         <ListItemIcon>
-                                                            <IconUser stroke={1.5} size="20px" />
-                                                        </ListItemIcon>
-                                                        <ListItemText
-                                                            primary={
-                                                                <Grid container spacing={1} justifyContent="space-between">
-                                                                    <Grid item>
-                                                                        <Typography variant="body2">
-                                                                          Social Profile
-                                                                        </Typography>
-                                                                    </Grid>
-                                                                    <Grid item>
-                                                                        <Chip
-                                                                            label="02"
-                                                                            size="small"
-                                                                            color="warning"
-                                                                            sx={{ '& .MuiChip-label': { mt: 0.25 } }}
-                                                                        />
-                                                                    </Grid>
-                                                                </Grid>
-                                                            }
-                                                        />
-                                                    </ListItemButton>
-                                                    <ListItemButton
-                                                        sx={{ borderRadius: `${borderRadius}px` }}
-                                                    >
-                                                        <ListItemIcon>
-                                                            <IconLogout stroke={1.5} size="20px" />
+                                                            <ExitToAppIcon />
                                                         </ListItemIcon>
                                                         <ListItemText
                                                             primary={

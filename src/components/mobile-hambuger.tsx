@@ -9,12 +9,11 @@ import Paper from '@mui/material/Paper';
 import Popper from '@mui/material/Popper';
 import Toolbar from '@mui/material/Toolbar';
 
-// project imports
+// mui icon
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+
 import Localization from '@/components/localization';
 import Transitions from '@/components/transition';
-
-// assets
-import { IconDotsVertical } from '@tabler/icons-react';
 
 // ==============================|| MOBILE HEADER ||============================== //
 
@@ -46,12 +45,7 @@ const MobileHambuger = () => {
         <>
             <Box component="span" ref={anchorRef} sx={{ mt: 1, ml: 1 }}>
                 <IconButton sx={{ color: 'text.primary', ml: 0.5, cursor: 'pointer' }} onClick={handleToggle}>
-                    <IconDotsVertical
-                        stroke={1.5}
-                        aria-controls={open ? 'menu-list-grow' : undefined}
-                        aria-haspopup="true"
-                        style={{ fontSize: '1.5rem' }}
-                    />
+                    <MoreVertIcon />
                 </IconButton>
             </Box>
 
