@@ -18,72 +18,72 @@ import Transitions from '@/components/transition';
 // ==============================|| MOBILE HEADER ||============================== //
 
 const MobileHambuger = () => {
-    const [open, setOpen] = useState(false);
-    const anchorRef = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef<HTMLDivElement>(null);
 
-    const handleToggle = () => {
-        setOpen((prevOpen) => !prevOpen);
-    };
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
 
-    const handleClose = (event: MouseEvent | TouchEvent | null) => {
-      if (anchorRef.current && event?.target instanceof Node && anchorRef.current.contains(event.target)) {
-        return;
-      }
-      setOpen(false);
-    };
+  const handleClose = (event: MouseEvent | TouchEvent | null) => {
+    if (anchorRef.current && event?.target instanceof Node && anchorRef.current.contains(event.target)) {
+      return;
+    }
+    setOpen(false);
+  };
 
-    const prevOpen = useRef(open);
-    useEffect(() => {
-        if (prevOpen.current === true && open === false) {
-          anchorRef.current?.focus();
-        }
+  const prevOpen = useRef(open);
+  useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current?.focus();
+    }
 
-        prevOpen.current = open;
-    }, [open]);
+    prevOpen.current = open;
+  }, [open]);
 
-    return (
-        <>
-            <Box component="span" ref={anchorRef} sx={{ mt: 1, ml: 1 }}>
-                <IconButton sx={{ color: 'text.primary', ml: 0.5, cursor: 'pointer' }} onClick={handleToggle}>
-                    <MoreVertIcon />
-                </IconButton>
-            </Box>
+  return (
+    <>
+      <Box component="span" ref={anchorRef} sx={{ mt: 1, ml: 1 }}>
+        <IconButton sx={{ color: 'text.primary', ml: 0.5, cursor: 'pointer' }} onClick={handleToggle}>
+          <MoreVertIcon />
+        </IconButton>
+      </Box>
 
-            <Popper
-                placement="bottom-end"
-                open={open}
-                anchorEl={anchorRef.current}
-                role={undefined}
-                transition
-                disablePortal
-                style={{ width: '100%', zIndex: 1 }}
-                modifiers={[
-                    {
-                        name: 'offset',
-                        options: {
-                            offset: [0, 30]
-                        }
-                    }
-                ]}
-            >
-                {({ TransitionProps }) => (
-                    <ClickAwayListener onClickAway={handleClose}>
-                        <Transitions type="zoom" in={open} {...TransitionProps} sx={{ transformOrigin: 'top right' }}>
-                            <Paper>
-                                {open && (
-                                    <AppBar color="inherit">
-                                        <Toolbar sx={{ py: 2.75 }}>
-                                            <Localization />
-                                        </Toolbar>
-                                    </AppBar>
-                                )}
-                            </Paper>
-                        </Transitions>
-                    </ClickAwayListener>
+      <Popper
+        placement="bottom-end"
+        open={open}
+        anchorEl={anchorRef.current}
+        role={undefined}
+        transition
+        disablePortal
+        style={{ width: '100%', zIndex: 1 }}
+        modifiers={[
+          {
+            name: 'offset',
+            options: {
+              offset: [0, 30],
+            },
+          },
+        ]}
+      >
+        {({ TransitionProps }) => (
+          <ClickAwayListener onClickAway={handleClose}>
+            <Transitions type="zoom" in={open} {...TransitionProps} sx={{ transformOrigin: 'top right' }}>
+              <Paper>
+                {open && (
+                  <AppBar color="inherit">
+                    <Toolbar sx={{ py: 2.75 }}>
+                      <Localization />
+                    </Toolbar>
+                  </AppBar>
                 )}
-            </Popper>
-        </>
-    );
+              </Paper>
+            </Transitions>
+          </ClickAwayListener>
+        )}
+      </Popper>
+    </>
+  );
 };
 
 export default MobileHambuger;

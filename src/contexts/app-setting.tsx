@@ -1,7 +1,4 @@
-import React, {
-  createContext,
-  PropsWithChildren,
-} from "react";
+import React, { createContext, PropsWithChildren } from 'react';
 
 import defaultConfig from '@/configs';
 
@@ -12,7 +9,7 @@ const initialState = {
   onChangeMiniDrawer: () => {},
   onChangeMode: () => {},
   onReset: () => {},
-  handlerDrawerOpen: () => {}
+  handlerDrawerOpen: () => {},
 };
 
 type AppSettingContextType = {
@@ -35,9 +32,7 @@ type AppSettingContextType = {
 
 export const AppSettingContext = createContext<AppSettingContextType>(initialState as AppSettingContextType);
 
-export const AppSettingContextProvider: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
+export const AppSettingContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [config, setConfig] = React.useState({
     menuOrientation: initialState.menuOrientation,
     miniDrawer: initialState.miniDrawer,
@@ -48,27 +43,27 @@ export const AppSettingContextProvider: React.FC<PropsWithChildren> = ({
     outlinedFilled: initialState.outlinedFilled,
     presetColor: initialState.presetColor,
     themeDirection: initialState.themeDirection,
-    drawerOpen: initialState.drawerOpen
+    drawerOpen: initialState.drawerOpen,
   });
 
   const onChangeMenuOrientation = (menuOrientation: string) => {
     setConfig({
       ...config,
-      menuOrientation
+      menuOrientation,
     });
   };
 
   const onChangeMiniDrawer = (miniDrawer: boolean) => {
     setConfig({
       ...config,
-      miniDrawer
+      miniDrawer,
     });
   };
 
   const onChangeMode = (mode: string) => {
     setConfig({
       ...config,
-      mode
+      mode,
     });
   };
 
@@ -77,8 +72,8 @@ export const AppSettingContextProvider: React.FC<PropsWithChildren> = ({
   };
 
   const handlerDrawerOpen = () => {
-    setConfig(prevState => ({ ...prevState, drawerOpen: !prevState.drawerOpen }));
-  }
+    setConfig((prevState) => ({ ...prevState, drawerOpen: !prevState.drawerOpen }));
+  };
 
   return (
     <AppSettingContext.Provider
@@ -88,7 +83,7 @@ export const AppSettingContextProvider: React.FC<PropsWithChildren> = ({
         onChangeMiniDrawer,
         onChangeMode,
         onReset,
-        handlerDrawerOpen
+        handlerDrawerOpen,
       }}
     >
       {children}

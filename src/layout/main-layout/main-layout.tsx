@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 // mui
 import { alpha, styled } from '@mui/material/styles';
@@ -19,7 +19,6 @@ import MainContentStyled from './styled/main-content-styled';
 
 interface MainLayoutProps extends React.PropsWithChildren {}
 
-
 function MainLayout({ children }: MainLayoutProps) {
   const { palette, transitions, breakpoints } = useTheme();
   const downMD = useMediaQuery(breakpoints.down('md'));
@@ -31,7 +30,7 @@ function MainLayout({ children }: MainLayoutProps) {
   }, [miniDrawer]);
 
   React.useEffect(() => {
-      downMD && handlerDrawerOpen();
+    downMD && handlerDrawerOpen();
   }, [downMD]);
 
   const isHorizontal = menuOrientation === MenuOrientation.HORIZONTAL && !downMD;
@@ -39,25 +38,25 @@ function MainLayout({ children }: MainLayoutProps) {
   return (
     <>
       <Box sx={{ display: 'flex' }}>
-          {/* header */}
-          <AppBar enableColorOnDark position="fixed" color="inherit" elevation={0} sx={{ bgcolor: 'background.default' }}>
-            <Toolbar sx={{ p: isHorizontal ? 1.25 : 2 }}>
-              <Header />
-            </Toolbar>
-          </AppBar>
+        {/* header */}
+        <AppBar enableColorOnDark position="fixed" color="inherit" elevation={0} sx={{ bgcolor: 'background.default' }}>
+          <Toolbar sx={{ p: isHorizontal ? 1.25 : 2 }}>
+            <Header />
+          </Toolbar>
+        </AppBar>
 
-          {/* menu / drawer */}
-          <Sidebar />
+        {/* menu / drawer */}
+        <Sidebar />
 
-          {/* main content */}
-          <MainContentStyled  {...{ borderRadius, menuOrientation, open: drawerOpen, palette, transitions, breakpoints }}>
-            <Container maxWidth={container ? 'lg' : false} {...(!container && { sx: { px: { xs: 0 } } })}>
-              {children}
-            </Container>
-          </MainContentStyled>
+        {/* main content */}
+        <MainContentStyled {...{ borderRadius, menuOrientation, open: drawerOpen, palette, transitions, breakpoints }}>
+          <Container maxWidth={container ? 'lg' : false} {...(!container && { sx: { px: { xs: 0 } } })}>
+            {children}
+          </Container>
+        </MainContentStyled>
       </Box>
     </>
-  )
+  );
 }
 
-export default MainLayout
+export default MainLayout;

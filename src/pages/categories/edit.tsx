@@ -1,6 +1,6 @@
-import { Box, TextField } from "@mui/material";
-import { Edit } from "@refinedev/mui";
-import { useForm } from "@refinedev/react-hook-form";
+import { Box, TextField } from '@mui/material';
+import { Edit } from '@refinedev/mui';
+import { useForm } from '@refinedev/react-hook-form';
 
 export const CategoryEdit = () => {
   const {
@@ -11,14 +11,10 @@ export const CategoryEdit = () => {
 
   return (
     <Edit saveButtonProps={saveButtonProps}>
-      <Box
-        component="form"
-        sx={{ display: "flex", flexDirection: "column" }}
-        autoComplete="off"
-      >
+      <Box component="form" sx={{ display: 'flex', flexDirection: 'column' }} autoComplete="off">
         <TextField
-          {...register("title", {
-            required: "This field is required",
+          {...register('title', {
+            required: 'This field is required',
           })}
           error={!!(errors as any)?.title}
           helperText={(errors as any)?.title?.message}
@@ -26,7 +22,7 @@ export const CategoryEdit = () => {
           fullWidth
           InputLabelProps={{ shrink: true }}
           type="text"
-          label={"Title"}
+          label={'Title'}
           name="title"
         />
       </Box>

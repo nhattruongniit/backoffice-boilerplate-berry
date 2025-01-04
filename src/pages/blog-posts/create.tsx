@@ -1,7 +1,7 @@
-import { Autocomplete, Box, MenuItem, Select, TextField } from "@mui/material";
-import { Create, useAutocomplete } from "@refinedev/mui";
-import { useForm } from "@refinedev/react-hook-form";
-import { Controller } from "react-hook-form";
+import { Autocomplete, Box, MenuItem, Select, TextField } from '@mui/material';
+import { Create, useAutocomplete } from '@refinedev/mui';
+import { useForm } from '@refinedev/react-hook-form';
+import { Controller } from 'react-hook-form';
 
 export const BlogPostCreate = () => {
   const {
@@ -13,19 +13,15 @@ export const BlogPostCreate = () => {
   } = useForm({});
 
   const { autocompleteProps: categoryAutocompleteProps } = useAutocomplete({
-    resource: "categories",
+    resource: 'categories',
   });
 
   return (
     <Create isLoading={formLoading} saveButtonProps={saveButtonProps}>
-      <Box
-        component="form"
-        sx={{ display: "flex", flexDirection: "column" }}
-        autoComplete="off"
-      >
+      <Box component="form" sx={{ display: 'flex', flexDirection: 'column' }} autoComplete="off">
         <TextField
-          {...register("title", {
-            required: "This field is required",
+          {...register('title', {
+            required: 'This field is required',
           })}
           error={!!(errors as any)?.title}
           helperText={(errors as any)?.title?.message}
@@ -33,12 +29,12 @@ export const BlogPostCreate = () => {
           fullWidth
           InputLabelProps={{ shrink: true }}
           type="text"
-          label={"Title"}
+          label={'Title'}
           name="title"
         />
         <TextField
-          {...register("content", {
-            required: "This field is required",
+          {...register('content', {
+            required: 'This field is required',
           })}
           error={!!(errors as any)?.content}
           helperText={(errors as any)?.content?.message}
@@ -46,13 +42,13 @@ export const BlogPostCreate = () => {
           fullWidth
           InputLabelProps={{ shrink: true }}
           multiline
-          label={"Content"}
+          label={'Content'}
           name="content"
         />
         <Controller
           control={control}
-          name={"category.id"}
-          rules={{ required: "This field is required" }}
+          name={'category.id'}
+          rules={{ required: 'This field is required' }}
           // eslint-disable-next-line
           defaultValue={null as any}
           render={({ field }) => (
@@ -65,27 +61,21 @@ export const BlogPostCreate = () => {
               getOptionLabel={(item) => {
                 return (
                   categoryAutocompleteProps?.options?.find((p) => {
-                    const itemId =
-                      typeof item === "object"
-                        ? item?.id?.toString()
-                        : item?.toString();
+                    const itemId = typeof item === 'object' ? item?.id?.toString() : item?.toString();
                     const pId = p?.id?.toString();
                     return itemId === pId;
-                  })?.title ?? ""
+                  })?.title ?? ''
                 );
               }}
               isOptionEqualToValue={(option, value) => {
                 const optionId = option?.id?.toString();
-                const valueId =
-                  typeof value === "object"
-                    ? value?.id?.toString()
-                    : value?.toString();
+                const valueId = typeof value === 'object' ? value?.id?.toString() : value?.toString();
                 return value === undefined || optionId === valueId;
               }}
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  label={"Category"}
+                  label={'Category'}
                   margin="normal"
                   variant="outlined"
                   error={!!(errors as any)?.category?.id}
@@ -101,11 +91,7 @@ export const BlogPostCreate = () => {
           control={control}
           render={({ field }) => {
             return (
-              <Select
-                {...field}
-                value={field?.value || "draft"}
-                label={"Status"}
-              >
+              <Select {...field} value={field?.value || 'draft'} label={'Status'}>
                 <MenuItem value="draft">Draft</MenuItem>
                 <MenuItem value="published">Published</MenuItem>
                 <MenuItem value="rejected">Rejected</MenuItem>

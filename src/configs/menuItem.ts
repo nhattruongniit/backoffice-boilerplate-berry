@@ -6,17 +6,17 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 const dashboard = {
   id: 'dashboard',
-  title: "Dashboard",
+  title: 'Dashboard',
   icon: DashboardIcon,
   type: 'group',
   children: [
     {
       id: 'statistics',
-      title: "Statistics",
+      title: 'Statistics',
       type: 'item',
       url: '/dashboard/statistics',
       icon: DashboardIcon,
-      breadcrumbs: false
+      breadcrumbs: false,
     },
     {
       id: 'analytics',
@@ -24,43 +24,43 @@ const dashboard = {
       type: 'item',
       url: '/dashboard/analytics',
       icon: AnalyticsIcon,
-      breadcrumbs: false
-    }
-  ]
+      breadcrumbs: false,
+    },
+  ],
 };
 
 const application = {
   id: 'application',
-  title: "Application",
+  title: 'Application',
   icon: AppsIcon,
   type: 'group',
   children: [
     {
       id: 'users',
-      title: "User",
+      title: 'User',
       type: 'collapse',
       icon: ManageAccountsIcon,
       children: [
         {
-            id: 'posts',
-            title: "Profile",
-            type: 'item',
-            link: '/apps/user/profile/:tab',
-            url: '/apps/user/profile/personal',
-            breadcrumbs: false
+          id: 'posts',
+          title: 'Profile',
+          type: 'item',
+          link: '/apps/user/profile/:tab',
+          url: '/apps/user/profile/personal',
+          breadcrumbs: false,
         },
-      ]
+      ],
     },
     {
       id: 'mail',
-      title: "Mail",
+      title: 'Mail',
       type: 'item',
       icon: MailOutlineIcon,
-      url: '/apps/mail'
-  },
-  ]
-}
+      url: '/apps/mail',
+    },
+  ],
+};
 
 export const menuItem = {
-  items: [dashboard, application]
-}
+  items: [dashboard, application],
+};
