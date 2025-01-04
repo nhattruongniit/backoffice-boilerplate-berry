@@ -24,7 +24,6 @@ import TranslateTwoToneIcon from '@mui/icons-material/TranslateTwoTone';
 import { useAppSetting } from '@/contexts/app-setting';
 
 const Localization = () => {
-  const abc = '';
   const { mode, borderRadius } = useAppSetting();
 
   const theme = useTheme();
