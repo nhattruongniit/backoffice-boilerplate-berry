@@ -19,7 +19,7 @@ import Typography from '@mui/material/Typography';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 // mui icon
-import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone'
 
 // third-party
 import PerfectScrollbar from 'react-perfect-scrollbar';
