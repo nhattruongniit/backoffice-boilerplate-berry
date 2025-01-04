@@ -4,6 +4,12 @@ import AppsIcon from '@mui/icons-material/Apps';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
+// pages
+import Statistics from '@/pages/dashboard/statistics';
+import Analytics from '@/pages/dashboard/analytics';
+import Mail from '@/pages/application/mail';
+import Portfolio from '@/pages/application/user/portfolio';
+
 const dashboard = {
   id: 'dashboard',
   title: 'Dashboard',
@@ -16,7 +22,8 @@ const dashboard = {
       type: 'item',
       url: '/dashboard/statistics',
       icon: DashboardIcon,
-      breadcrumbs: false,
+      component: Statistics,
+      breadcrumbs: true,
     },
     {
       id: 'analytics',
@@ -24,7 +31,8 @@ const dashboard = {
       type: 'item',
       url: '/dashboard/analytics',
       icon: AnalyticsIcon,
-      breadcrumbs: false,
+      component: Analytics,
+      breadcrumbs: true,
     },
   ],
 };
@@ -36,18 +44,19 @@ const application = {
   type: 'group',
   children: [
     {
-      id: 'users',
+      id: 'user',
       title: 'User',
       type: 'collapse',
       icon: ManageAccountsIcon,
       children: [
         {
-          id: 'posts',
-          title: 'Profile',
+          id: 'portfolio',
+          title: 'Portfolio',
           type: 'item',
-          link: '/apps/user/profile/:tab',
-          url: '/apps/user/profile/personal',
-          breadcrumbs: false,
+          component: Portfolio,
+          // link: '/apps/user/profile/:tab',
+          url: '/application/user/portfolio',
+          breadcrumbs: true,
         },
       ],
     },
@@ -56,7 +65,8 @@ const application = {
       title: 'Mail',
       type: 'item',
       icon: MailOutlineIcon,
-      url: '/apps/mail',
+      component: Mail,
+      url: '/application/mail',
     },
   ],
 };

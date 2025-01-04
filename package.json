@@ -74,9 +74,6 @@
       "last 1 safari version"
     ]
   },
-  "refine": {
-    "projectId": "rlmEww-FQCHXm-WXAzXe"
-  },
   "lint-staged": {
     "*.{ts,tsx}": [
       "npm run lint",

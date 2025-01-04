@@ -13,5 +13,7 @@ module.exports = {
   plugins: ["prettier", "react-refresh"],
   rules: {
     "react-refresh/only-export-components": "warn",
+    'import/no-default-export': 'off',
+    "eslint-plugin-import": "off",
   },
 };

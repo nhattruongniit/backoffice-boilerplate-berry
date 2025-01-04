@@ -16,8 +16,9 @@ import Header from './components/header';
 import Sidebar from './components/sidebar';
 
 import MainContentStyled from './styled/main-content-styled';
+import Breadcrumbs from './components/breadcrumbs';
 
-interface MainLayoutProps extends React.PropsWithChildren {}
+type MainLayoutProps = React.PropsWithChildren;
 
 function MainLayout({ children }: MainLayoutProps) {
   const { palette, transitions, breakpoints } = useTheme();
@@ -51,6 +52,7 @@ function MainLayout({ children }: MainLayoutProps) {
         {/* main content */}
         <MainContentStyled {...{ borderRadius, menuOrientation, open: drawerOpen, palette, transitions, breakpoints }}>
           <Container maxWidth={container ? 'lg' : false} {...(!container && { sx: { px: { xs: 0 } } })}>
+            <Breadcrumbs />
             {children}
           </Container>
         </MainContentStyled>

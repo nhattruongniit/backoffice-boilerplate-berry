@@ -29,15 +29,10 @@ Refine's hooks and components simplifies the development process and eliminates 
     yarn dev
 ```
 
-### Building for production.
-
-```bash
-    yarn run build
-```
-
 ### Running the production server.
 
 ```bash
+    yarn run build
     yarn start
 ```
 

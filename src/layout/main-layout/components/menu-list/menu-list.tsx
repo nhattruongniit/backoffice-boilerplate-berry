@@ -1,4 +1,4 @@
-import { memo, useLayoutEffect, useState } from 'react';
+import { memo, useState } from 'react';
 
 // material-ui
 import Box from '@mui/material/Box';
@@ -10,7 +10,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 // project imports
 import NavItem from './nav-item';
 import NavGroup from './nav-group';
-import { menuItem } from '@/configs/menuItem';
+import { menuItem } from '@/configs/menu-items';
 
 import { MenuOrientation } from '@/configs';
 import { HORIZONTAL_MAX_ITEM } from '@/configs';
