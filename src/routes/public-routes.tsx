@@ -13,9 +13,9 @@ const publicRoutes = () => {
   return (
     <Route
       element={
-        <div>
+        <>
           <Outlet />
-        </div>
+        </>
       }
     >
       <Route path={PATH_NAME.PRIVACY_POLICY} element={<PrivacyPolicy />} />

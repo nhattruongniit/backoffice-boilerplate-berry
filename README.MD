@@ -1,38 +1,124 @@
-# Backoffice Boilerplate Dashboard
+# Backoffice Boilerplate MUI
 
-<div align="center" style="margin: 30px;">
-    <a href="https://refine.dev">
-    <img alt="refine logo" src="https://refine.ams3.cdn.digitaloceanspaces.com/readme/refine-readme-banner.png">
-    </a>
-</div>
-<br/>
+A simple backoffice boilerplate apps built with React Typescript, and MUI.
 
-This [Refine](https://github.com/refinedev/refine) project was generated with [create refine-app](https://github.com/refinedev/refine/tree/master/packages/create-refine-app).
+## Stack
 
-## Getting Started
+### FE
 
-A React Framework for building internal tools, admin panels, dashboards & B2B apps with unmatched flexibility ✨
+- refine (https://refine.dev/)
+- react typescript
+- MUI
 
-Refine's hooks and components simplifies the development process and eliminates the repetitive tasks by providing industry-standard solutions for crucial aspects of a project, including authentication, access control, routing, networking, state management, and i18n.
+### Tools
 
-## Available Scripts
+- eslint
+- prettier
+- husky
+- lint-staged
 
-### Install dependencies.
+## Git replacing LF with CRLF
 
-```bash
-    yarn install
+```
+$ git config --global core.autocrlf false
+$ git rm --cached -r .
+$ git reset --hard
 ```
 
-### Running the development server.
+## Installation
 
 ```bash
-    yarn dev
-```
+# install app's depndencie
+$ yarn install
 
-### Running the production server.
+# install node version
+Please install at least v20 version node
+```
 
 ```bash
-    yarn run build
-    yarn start
+# install app's depndencie
+$ npm install
 ```
+
+## Scripts
+
+```bash
+# install typescript
+$ npm install -g typescript
+```
+
+```bash
+# run dev server
+$ yarn run dev
+
+# build for production with minify
+$ npm run build
+
+# run as production
+$ npm run start
+
+# run `lint` to tell you what is wrong code.
+$ npm run lint
+
+# run `format` to format all code based on your prettier and linting configuration.
+$ npm run format
+```
+
+## Directory sturcture code
+
+
+````
+├── public/          #static files
+│   ├── assets/      #assets
+|   |    |── images  #images
+|   |    |── fonts   #fonts
+│   └── index.html   #html template
+│
+├── src/             #project root
+|   |── assets/      #assets file
+|   |── components/  #common components reuse
+│   ├── configs/     #configs project
+|   |── contexts/    #contextApi
+|   |── guards/      #guard authenticate
+│   ├── hooks/       #hooks custom
+|   |── layouts/     #common layouts
+|   |── pages/       #pages source
+|   |── routes/      #common routes
+│   ├── services/    #services source
+|   |── themes/      #themes app
+│   ├── App.js
+│   ├── App.test.js
+│   ├── index.js
+
+└── package.json```
+````
+
+# Convention code
+
+### Component's file name should be in Snake Case
+
+Eg: product-card.tsx, product-list.tsx, login-form.tsx
+
+
+### Component having own folders should have a component file with the same name.
+
+This way when we search for files, we don't get a list of <b>index.ts</b> but will receive the actual component files.
+
+#### Create an index.ts file in that component folder which export the named component.
+
+```
+import Product from './product';
+export default Product;
+```
+
+or
+
+```
+export { default } from './product';
+```
+
+### Pages
+Each file in this folder contains its route. A page can contain its sub folder. And every sub folder represent its own route. This folder is confused for yourself when you identify which components are in the pages folder, or in the feature folder. So, I propose we can reference ways the NextJS framework using app router to separate components.
+
+![page-diagram](./documents/page-diagram.png)
 
