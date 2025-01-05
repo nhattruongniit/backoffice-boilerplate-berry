@@ -13,18 +13,6 @@ import componentStyleOverrides from './compStyleOverride';
 import customShadows from './shadows';
 import { useAppSetting } from '@/contexts/app-setting';
 
-declare module '@mui/material/styles' {
-  interface TypographyVariants {
-    mediumAvatar: React.CSSProperties;
-    commonAvatar: React.CSSProperties;
-  }
-
-  interface TypographyVariantsOptions {
-    mediumAvatar?: React.CSSProperties;
-    commonAvatar?: React.CSSProperties;
-  }
-}
-
 export default function ThemeCustomization({ children }: React.PropsWithChildren) {
   const { borderRadius, fontFamily, mode, outlinedFilled, presetColor, themeDirection } = useAppSetting();
   const theme = useMemo(() => Palette(mode as PaletteMode, presetColor), [mode, presetColor]);

@@ -17,6 +17,7 @@ import { AppSettingContextProvider } from '@/contexts/app-setting';
 import { AuthenticatedRoutes } from './routes/authenticated-routes';
 import { PublicRoutes } from './routes/public-routes';
 import { GuestRoutes } from './routes/guest-routes';
+import { restDataProvider } from './services/rest-service';
 
 function App() {
   return (
@@ -28,7 +29,9 @@ function App() {
             <GlobalStyles styles={{ html: { WebkitFontSmoothing: 'auto' } }} />
             <RefineSnackbarProvider>
               <Refine
-                dataProvider={dataProvider('https://api.fake-rest.refine.dev')}
+                dataProvider={{
+                  default: restDataProvider,
+                }}
                 notificationProvider={useNotificationProvider}
                 resources={[
                   {
