@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -7,7 +8,6 @@ import Box from '@mui/material/Box';
 import Chip from '@mui/material/Chip';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import Divider from '@mui/material/Divider';
-import Grid from '@mui/material/Grid';
 import InputAdornment from '@mui/material/InputAdornment';
 import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -33,6 +33,7 @@ import Transitions from '@/components/transition';
 import { ThemeMode } from '@/configs';
 
 import { useAppSetting } from '@/contexts/app-setting';
+import { PATH_NAME } from '@/configs/path-name';
 
 const ProfileSection = () => {
   const theme = useTheme();
@@ -50,6 +51,11 @@ const ProfileSection = () => {
       return;
     }
     setOpen(false);
+  };
+
+  const handeLogout = () => {
+    window.localStorage.clear();
+    window.location.href = PATH_NAME.LOGIN;
   };
 
   const prevOpen = useRef(open);
@@ -177,7 +183,7 @@ const ProfileSection = () => {
                             </ListItemIcon>
                             <ListItemText primary={<Typography variant="body2">Account Settings</Typography>} />
                           </ListItemButton>
-                          <ListItemButton sx={{ borderRadius: `${borderRadius}px` }}>
+                          <ListItemButton sx={{ borderRadius: `${borderRadius}px` }} onClick={handeLogout}>
                             <ListItemIcon>
                               <ExitToAppIcon />
                             </ListItemIcon>

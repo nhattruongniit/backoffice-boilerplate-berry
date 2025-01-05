@@ -24,6 +24,7 @@ declare module '@mui/material/styles' {
     largeAvatar: React.CSSProperties;
     subMenuCaption: React.CSSProperties;
     menuCaption: React.CSSProperties;
+    customInput: React.CSSProperties;
   }
 
   interface PaletteOptions {

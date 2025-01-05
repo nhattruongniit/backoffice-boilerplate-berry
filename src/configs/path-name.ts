@@ -7,4 +7,5 @@ export const PATH_NAME = {
   MAIL: '/application/mail',
   PORTFOLIO: '/application/user/portfolio',
   PRIVACY_POLICY: '/privacy-policy',
+  FORGOT_PASSWORD: '/forgot-password',
 };
