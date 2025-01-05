@@ -47,37 +47,30 @@ const RegisterForm = () => {
 
   return (
     <>
-      <Grid container direction="column" justifyContent="center" spacing={2}>
-        <Grid item xs={12} container alignItems="center" justifyContent="center">
-          <Box sx={{ mb: 2 }}>
-            <Typography variant="subtitle1">Sign up with Email address</Typography>
-          </Box>
-        </Grid>
-      </Grid>
+      <Box sx={{ mb: 2, textAlign: 'center' }}>
+        <Typography variant="subtitle1">Sign up with Email address</Typography>
+      </Box>
 
       <form noValidate onSubmit={handleSubmit}>
-        <Grid container spacing={{ xs: 0, sm: 2 }}>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label="First Name"
-              margin="normal"
-              name="firstName"
-              type="text"
-              sx={{ ...theme.typography.customInput }}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              fullWidth
-              label="Last Name"
-              margin="normal"
-              name="lastName"
-              type="text"
-              sx={{ ...theme.typography.customInput }}
-            />
-          </Grid>
-        </Grid>
+        <Box sx={{ display: 'flex', gap: 2 }}>
+          <TextField
+            fullWidth
+            label="First Name"
+            margin="normal"
+            name="firstName"
+            type="text"
+            sx={{ ...theme.typography.customInput }}
+          />
+          <TextField
+            fullWidth
+            label="Last Name"
+            margin="normal"
+            name="lastName"
+            type="text"
+            sx={{ ...theme.typography.customInput }}
+          />
+        </Box>
+
         <FormControl fullWidth sx={{ ...theme.typography.customInput }}>
           <InputLabel htmlFor="outlined-adornment-email-register">Email Address / Username</InputLabel>
           <OutlinedInput id="outlined-adornment-email-register" type="email" name="email" inputProps={{}} />
