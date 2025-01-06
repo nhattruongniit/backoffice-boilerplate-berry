@@ -61,7 +61,6 @@
     "refine": "refine",
     "lint": "eslint --ext .ts,.tsx src --color",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "husky-install": "husky install & npx husky add .husky/pre-commit 'yarn run lint-staged' & npx husky add .husky/commit-msg  'pre-received' ",
     "prepare": "husky"
   },
   "browserslist": {
