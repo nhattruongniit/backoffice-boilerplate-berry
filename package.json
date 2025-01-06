@@ -60,8 +60,7 @@
     "start": "refine start",
     "refine": "refine",
     "lint": "eslint --ext .ts,.tsx src --color",
-    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "prepare": "husky"
+    "format": "prettier --write \"src/**/*.{ts,tsx}\""
   },
   "browserslist": {
     "production": [
