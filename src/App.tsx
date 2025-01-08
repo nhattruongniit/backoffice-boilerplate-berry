@@ -31,12 +31,19 @@ function App() {
               <Refine
                 dataProvider={{
                   default: restDataProvider,
+                  tonyapi: dataProvider('https://tony-auth-express-vdee-6j0s-fhovok9bu.vercel.app'),
                 }}
                 notificationProvider={useNotificationProvider}
                 resources={[
                   {
                     name: 'dashboard/statistics',
                     list: '/dashboard/statistics',
+                  },
+                  {
+                    name: 'users',
+                    list: '/users',
+                    create: '/users/create',
+                    edit: '/users/:id',
                   },
                 ]}
                 options={{

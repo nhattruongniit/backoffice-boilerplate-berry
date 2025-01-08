@@ -10,10 +10,14 @@ import Paper from '@mui/material/Paper';
 
 // components
 import MainCard from '@/components/card/main-card';
+import { Button } from '@mui/material';
 
 function Portfolio() {
-  const { data, isLoading, isError } = useList({
+  const { data, isLoading, isError, refetch } = useList({
     resource: '/todos',
+    queryOptions: {
+      enabled: false,
+    },
     pagination: {
       pageSize: 5,
       current: 1,
@@ -36,31 +40,40 @@ function Portfolio() {
     return <div>Something went wrong!</div>;
   }
 
+  function loadData() {
+    refetch();
+  }
+
   return (
-    <MainCard>
-      <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Id</TableCell>
-              <TableCell align="left">Title</TableCell>
-              <TableCell align="left">Completed</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {todos.map((row) => (
-              <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell component="th" scope="row">
-                  {row.id}
-                </TableCell>
-                <TableCell align="left">{row.title}</TableCell>
-                <TableCell align="left">{row.completed ? 'Completed' : 'Not Completed'}</TableCell>
+    <>
+      <MainCard>
+        <Button variant="contained" onClick={loadData}>
+          Load
+        </Button>
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Id</TableCell>
+                <TableCell align="left">Title</TableCell>
+                <TableCell align="left">Completed</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </MainCard>
+            </TableHead>
+            <TableBody>
+              {todos.map((row) => (
+                <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                  <TableCell component="th" scope="row">
+                    {row.id}
+                  </TableCell>
+                  <TableCell align="left">{row.title}</TableCell>
+                  <TableCell align="left">{row.completed ? 'Completed' : 'Not Completed'}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </MainCard>
+    </>
   );
 }
 

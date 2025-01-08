@@ -4,11 +4,7 @@ import AppsIcon from '@mui/icons-material/Apps';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
-// pages
-import Statistics from '@/pages/dashboard/statistics';
-import Analytics from '@/pages/dashboard/analytics';
-import Mail from '@/pages/application/mail';
-import Portfolio from '@/pages/application/user/portfolio';
+import { PATH_NAME } from './path-name';
 
 const dashboard = {
   id: 'dashboard',
@@ -22,7 +18,6 @@ const dashboard = {
       type: 'item',
       url: '/dashboard/statistics',
       icon: DashboardIcon,
-      component: Statistics,
       breadcrumbs: true,
     },
     {
@@ -31,7 +26,6 @@ const dashboard = {
       type: 'item',
       url: '/dashboard/analytics',
       icon: AnalyticsIcon,
-      component: Analytics,
       breadcrumbs: true,
     },
   ],
@@ -53,9 +47,15 @@ const application = {
           id: 'portfolio',
           title: 'Portfolio',
           type: 'item',
-          component: Portfolio,
           // link: '/apps/user/profile/:tab',
           url: '/application/user/portfolio',
+          breadcrumbs: true,
+        },
+        {
+          id: 'user-list',
+          title: 'List',
+          type: 'item',
+          url: PATH_NAME.USER_LIST,
           breadcrumbs: true,
         },
       ],
@@ -65,7 +65,6 @@ const application = {
       title: 'Mail',
       type: 'item',
       icon: MailOutlineIcon,
-      component: Mail,
       url: '/application/mail',
     },
   ],
