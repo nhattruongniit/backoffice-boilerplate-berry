@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet, Route } from 'react-router-dom';
+import { ResourceProps } from '@refinedev/core/dist/contexts/resource/types';
 
 import AuthGuard from '@/guards/auth-guard';
 import MainLayout from '@/layout/main-layout';
