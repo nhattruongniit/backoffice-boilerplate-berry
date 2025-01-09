@@ -14,10 +14,12 @@ import ThemeCustomization from '@/themes';
 import { AppSettingContextProvider } from '@/contexts/app-setting';
 
 // routes
-import { AuthenticatedRoutes } from './routes/authenticated-routes';
-import { PublicRoutes } from './routes/public-routes';
-import { GuestRoutes } from './routes/guest-routes';
+import { authenticatedResources, AuthenticatedRoutes } from './routes/authenticated-routes';
+import { publicResources, PublicRoutes } from './routes/public-routes';
+import { guestResources. GuestRoutes } from './routes/guest-routes';
 import { restDataProvider } from './services/rest-service';
+
+import { PATH_NAME } from './configs/path-name';
 
 function App() {
   return (
@@ -34,18 +36,7 @@ function App() {
                   tonyapi: dataProvider('https://tony-auth-express-vdee-6j0s-fhovok9bu.vercel.app'),
                 }}
                 notificationProvider={useNotificationProvider}
-                resources={[
-                  {
-                    name: 'dashboard/statistics',
-                    list: '/dashboard/statistics',
-                  },
-                  {
-                    name: 'users',
-                    list: '/users',
-                    create: '/users/create',
-                    edit: '/users/:id',
-                  },
-                ]}
+                resources={[...authenticatedResources, ...publicResources, ...guestResources]}
                 options={{
                   syncWithLocation: true,
                   warnWhenUnsavedChanges: true,
@@ -54,7 +45,7 @@ function App() {
                 }}
               >
                 <Routes>
-                  <Route path="/" element={<NavigateToResource resource="dashboard/statistics" />} />
+                  <Route path="/" element={<NavigateToResource resource={PATH_NAME.ANALYTICS} />} />
                   {PublicRoutes}
                   {AuthenticatedRoutes}
                   {GuestRoutes}
