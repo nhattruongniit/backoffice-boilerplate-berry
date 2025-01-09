@@ -16,7 +16,7 @@ import { AppSettingContextProvider } from '@/contexts/app-setting';
 // routes
 import { authenticatedResources, AuthenticatedRoutes } from './routes/authenticated-routes';
 import { publicResources, PublicRoutes } from './routes/public-routes';
-import { guestResources. GuestRoutes } from './routes/guest-routes';
+import { guestResources, GuestRoutes } from './routes/guest-routes';
 import { restDataProvider } from './services/rest-service';
 
 import { PATH_NAME } from './configs/path-name';
