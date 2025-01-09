@@ -15,6 +15,25 @@ const UserList = Loadable(React.lazy(() => import('@/pages/application/user/list
 // configs
 import { PATH_NAME } from '@/configs/path-name';
 
+export const authenticatedResources: ResourceProps[] = [
+  {
+    name: PATH_NAME.STATISTICS,
+    list: PATH_NAME.STATISTICS,
+  },
+  {
+    name: PATH_NAME.ANALYTICS,
+    list: PATH_NAME.ANALYTICS,
+  },
+  {
+    name: PATH_NAME.MAIL,
+    list: PATH_NAME.MAIL,
+  },
+  {
+    name: 'users',
+    list: PATH_NAME.USER_LIST,
+  },
+];
+
 const authenticatedRoutes = () => {
   return (
     <Route
