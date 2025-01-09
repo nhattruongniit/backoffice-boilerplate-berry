@@ -17,15 +17,15 @@ import { PATH_NAME } from '@/configs/path-name';
 
 export const authenticatedResources: ResourceProps[] = [
   {
-    name: PATH_NAME.STATISTICS,
+    name: 'statistics',
     list: PATH_NAME.STATISTICS,
   },
   {
-    name: PATH_NAME.ANALYTICS,
+    name: 'analytics',
     list: PATH_NAME.ANALYTICS,
   },
   {
-    name: PATH_NAME.MAIL,
+    name: 'mail',
     list: PATH_NAME.MAIL,
   },
   {
