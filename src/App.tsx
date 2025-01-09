@@ -14,9 +14,9 @@ import ThemeCustomization from '@/themes';
 import { AppSettingContextProvider } from '@/contexts/app-setting';
 
 // routes
-import { AuthenticatedRoutes } from './routes/authenticated-routes';
-import { PublicRoutes } from './routes/public-routes';
-import { GuestRoutes } from './routes/guest-routes';
+import { authenticatedResources, AuthenticatedRoutes } from './routes/authenticated-routes';
+import { publicResources, PublicRoutes } from './routes/public-routes';
+import { guestResources, GuestRoutes } from './routes/guest-routes';
 import { restDataProvider } from './services/rest-service';
 
 function App() {
@@ -34,18 +34,7 @@ function App() {
                   tonyapi: restDataProvider,
                 }}
                 notificationProvider={useNotificationProvider}
-                resources={[
-                  {
-                    name: 'dashboard/statistics',
-                    list: '/dashboard/statistics',
-                  },
-                  {
-                    name: 'users',
-                    list: '/user',
-                    create: '/users/create',
-                    edit: '/users/:id',
-                  },
-                ]}
+                resources={[...authenticatedResources, ...publicResources, ...guestResources]}
                 options={{
                   syncWithLocation: true,
                   warnWhenUnsavedChanges: true,

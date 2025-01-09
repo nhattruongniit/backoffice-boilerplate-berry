@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet, Route } from 'react-router-dom';
+import { ResourceProps } from '@refinedev/core/dist/contexts/resource/types';
 
 import AuthGuard from '@/guards/auth-guard';
 import MainLayout from '@/layout/main-layout';
@@ -14,6 +15,28 @@ const UserList = Loadable(React.lazy(() => import('@/pages/application/user/list
 
 // configs
 import { PATH_NAME } from '@/configs/path-name';
+
+export const authenticatedResources: ResourceProps[] = [
+  {
+    name: 'dashboard/statistics',
+    list: 'dashboard/statistics',
+  },
+  {
+    name: 'analytics',
+    list: PATH_NAME.ANALYTICS,
+  },
+  {
+    name: 'mail',
+    list: PATH_NAME.MAIL,
+  },
+  {
+    name: 'user',
+    list: '/user',
+    create: '/user/create',
+    edit: '/user/edit/:id',
+    show: '/user/show/:id',
+  },
+];
 
 const authenticatedRoutes = () => {
   return (
