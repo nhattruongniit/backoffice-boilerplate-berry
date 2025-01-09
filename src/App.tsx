@@ -45,7 +45,7 @@ function App() {
                 }}
               >
                 <Routes>
-                  <Route path="/" element={<NavigateToResource resource={PATH_NAME.ANALYTICS} />} />
+                  <Route path="/" element={<NavigateToResource resource="statistics" />} />
                   {PublicRoutes}
                   {AuthenticatedRoutes}
                   {GuestRoutes}
