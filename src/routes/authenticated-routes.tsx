@@ -32,6 +32,9 @@ export const authenticatedResources: ResourceProps[] = [
   {
     name: 'users',
     list: PATH_NAME.USER_LIST,
+    create: PATH_NAME.USER_CREATE,
+    edit: PATH_NAME.USER_EDIT,
+    show: PATH_NAME.USER_SHOW
   },
 ];
 
