@@ -1,3 +1,4 @@
+import { DataProvider } from '@refinedev/core/dist/contexts/data/types';
 import dataProvider from '@refinedev/simple-rest';
 import axios from 'axios';
 
@@ -35,4 +36,23 @@ axiosInstance.interceptors.response.use(
   },
 );
 
-export const restDataProvider = dataProvider(import.meta.env.VITE_APP_BE_API_URL as string, axiosInstance);
+export const CustomRestDataProvider = (apiUrl: string, httpClient: any = axiosInstance): DataProvider => ({
+  ...dataProvider(apiUrl, httpClient),
+  getList: async ({ resource, pagination }) => {
+    const url = `${apiUrl}/${resource}?page=${pagination?.current}&limit=${pagination?.pageSize}`;
+    const { data } = await httpClient.get(`${url}`);
+    console.log('CustomRestDataProvider getList: ', data);
+    return {
+      data,
+      total: data?.data?.length,
+    };
+  },
+  // getOne: async ({ resource, id }) => {},
+  // create: async ({ resource, values }) => {},
+  // ...
+});
+
+export const restDataProvider = CustomRestDataProvider(
+  'https://tony-auth-express-vdee-6j0s-fhovok9bu.vercel.app/api',
+  axiosInstance,
+);

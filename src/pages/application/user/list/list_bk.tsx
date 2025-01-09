@@ -1,5 +1,6 @@
 import MainCard from '@/components/card/main-card';
-import { useTable } from '@refinedev/core';
+import Button from '@mui/material/Button/Button';
+import { useCreate, useList } from '@refinedev/core';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,35 +9,57 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import TablePagination from '@mui/material/TablePagination';
 
 export default function UserList() {
-  const { tableQuery, setCurrent, setPageSize } = useTable<any>({
-    resource: 'user',
+  const { data, refetch: refetchUser } = useList<any>({
+    resource: 'api/user',
     dataProviderName: 'tonyapi',
-    pagination: {
-      pageSize: 5,
-      current: 1,
-    },
     queryOptions: {
       retry: 0,
+      enabled: false,
     },
   });
-  const data: any = tableQuery?.data?.data;
-  const users = data?.data ?? [];
+  const { mutate } = useCreate({
+    resource: 'api/user/signup',
+    dataProviderName: 'tonyapi',
+    meta: {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    },
+  });
 
-  const handleChangePage = (_: unknown, newPage: number) => {
-    setCurrent(newPage + 1);
-  };
-
-  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPageSize(parseInt(event.target.value, 10));
-    setCurrent(1);
-  };
+  function createUser() {
+    mutate({
+      values: {
+        data: {
+          avatar:
+            'https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/avatars/00/009d272e2b496aa0758a86a17eac5f7716a99133_full.jpg',
+          firstName: 'Tony' + Date.now(),
+          lastName: 'Nguyen' + Date.now(),
+          email: `tony${Date.now()}@gmail.com`,
+          role: 'operator',
+          password: '123456',
+        },
+      },
+      successNotification: () => {
+        refetchUser();
+        return {
+          message: `Created Successfully.`,
+          description: 'Success with no errors',
+          type: 'success',
+        };
+      },
+    });
+  }
+  const users = (data?.data as any)?.data ?? [];
 
   return (
     <MainCard title="User List">
-      <h1>Table User</h1>
+      <Button variant="contained" color="primary" onClick={createUser}>
+        Create User
+      </Button>
+
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -57,15 +80,6 @@ export default function UserList() {
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
-        component="div"
-        count={data?.total}
-        rowsPerPage={Number(data?.limit || 5)}
-        page={data?.page - 1}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
     </MainCard>
   );
 }

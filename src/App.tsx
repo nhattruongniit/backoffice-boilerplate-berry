@@ -30,8 +30,8 @@ function App() {
             <RefineSnackbarProvider>
               <Refine
                 dataProvider={{
-                  default: restDataProvider,
-                  tonyapi: dataProvider('https://tony-auth-express-vdee-6j0s-fhovok9bu.vercel.app'),
+                  default: dataProvider(import.meta.env.VITE_APP_BE_API_URL),
+                  tonyapi: restDataProvider,
                 }}
                 notificationProvider={useNotificationProvider}
                 resources={[
@@ -41,7 +41,7 @@ function App() {
                   },
                   {
                     name: 'users',
-                    list: '/users',
+                    list: '/user',
                     create: '/users/create',
                     edit: '/users/:id',
                   },

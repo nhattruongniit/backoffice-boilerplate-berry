@@ -29,6 +29,13 @@ function Portfolio() {
         type: 'success',
       };
     },
+    errorNotification: () => {
+      return {
+        message: `Failed to fetch.`,
+        description: 'Failed with errors',
+        type: 'error',
+      };
+    },
   });
   const todos = data?.data ?? [];
 
