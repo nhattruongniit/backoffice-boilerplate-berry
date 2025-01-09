@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import { ResourceProps } from '@refinedev/core/dist/contexts/resource/types';
 
 import GuestGuard from '@/guards/guest-guard';
 import MinimalLayout from '@/layout/minimal-layout';
@@ -12,6 +13,21 @@ const ForgotPassword = Loadable(React.lazy(() => import('@/pages/forgot-password
 
 // configs
 import { PATH_NAME } from '@/configs/path-name';
+
+export const guestResources: ResourceProps[] = [
+  {
+    name: 'login',
+    create: 'login/create'
+  },
+  {
+    name: 'register',
+    create: 'register/create'
+  },
+  {
+    name: 'forgot-password',
+    create: 'forgot-password/create'
+  },
+];
 
 export const guestRoutes = () => {
   return (
