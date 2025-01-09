@@ -9,4 +9,7 @@ export const PATH_NAME = {
   PRIVACY_POLICY: '/privacy-policy',
   FORGOT_PASSWORD: '/forgot-password',
   USER_LIST: '/user/list',
+  USER_CREATE: '/user/create',
+  USER_EDIT: '/user/edit/:id',
+  USER_SHOW: '/user/show/:id',
 };
