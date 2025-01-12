@@ -17,7 +17,7 @@ import { AppSettingContextProvider } from '@/contexts/app-setting';
 import { authenticatedResources, AuthenticatedRoutes } from './routes/authenticated-routes';
 import { publicResources, PublicRoutes } from './routes/public-routes';
 import { guestResources, GuestRoutes } from './routes/guest-routes';
-import { restDataProvider } from './services/rest-service';
+import { restDataProvider } from './providers/rest-provider';
 
 function App() {
   return (

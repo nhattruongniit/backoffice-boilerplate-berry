@@ -1,5 +1,3 @@
-import React from 'react';
-
 import MainCard from '@/components/card/main-card';
 
 function Statistics() {

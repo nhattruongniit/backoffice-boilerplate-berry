@@ -1,5 +1,4 @@
-import MainCard from '@/components/card/main-card';
-import { useTable } from '@refinedev/core';
+import { useGetIdentity, useIsAuthenticated, useTable } from '@refinedev/core';
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -40,6 +39,12 @@ export default function UserList() {
 
   return (
     <List title="Table User">
+      {/* <CanAccess
+        resource='user'
+        action='create'
+      >
+        <Button>Click me</Button>
+      </CanAccess> */}
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>

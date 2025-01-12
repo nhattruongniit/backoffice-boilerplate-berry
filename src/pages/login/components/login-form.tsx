@@ -20,6 +20,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { PATH_NAME } from '@/configs/path-name';
 import FormHelperText from '@mui/material/FormHelperText/FormHelperText';
+import { useLogin } from '@refinedev/core';
 
 const validationSchema: any = yup.object().shape({
   email: yup.string().email('Invalid email address').required('Email is required'),
@@ -32,6 +33,8 @@ const validationSchema: any = yup.object().shape({
 
 const LoginForm = () => {
   const theme = useTheme();
+  const { mutate: login } = useLogin<any>();
+
   const {
     register,
     handleSubmit,
@@ -56,8 +59,12 @@ const LoginForm = () => {
 
   const onSubmit = (data: any) => {
     console.log('Form Data:', data);
-    window.localStorage.setItem('access_token', 'dasdasdsa');
-    window.location.href = PATH_NAME.ROOT;
+    // window.localStorage.setItem('access_token', 'dasdasdsa');
+    // window.location.href = PATH_NAME.ROOT;
+    login({
+      email: data.email,
+      password: data.password,
+    });
   };
 
   return (
