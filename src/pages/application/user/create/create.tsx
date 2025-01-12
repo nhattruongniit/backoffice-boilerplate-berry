@@ -10,9 +10,19 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import TextField from '@mui/material/TextField';
 import OutlinedInput from '@mui/material/OutlinedInput';
+import Stack from '@mui/material/Stack';
 
 function UserCreate() {
   const theme = useTheme();
+  const form = useForm({
+    defaultValues: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      role: '',
+      password: '',
+    },
+  });
   // const { mutate: mutateCreateUser, overtime } = useCreate({
   //   resource: 'user/signup',
   //   meta: {
@@ -21,7 +31,7 @@ function UserCreate() {
   //     }
   //   },
   //   successNotification: () => {
-  //     return {
+  //     return {/
   //       message: `Created Successfully.`,
   //       description: "Success with no errors",
   //       type: "success",
@@ -92,34 +102,22 @@ function UserCreate() {
         disabled: !isLoading,
       }}
     >
-      <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
-        <FormControl fullWidth sx={{ ...theme.typography.customInput }}>
-          <InputLabel>First Name</InputLabel>
-          <OutlinedInput type="text" inputProps={{}} />
-        </FormControl>
-        <FormControl fullWidth sx={{ ...theme.typography.customInput }}>
-          <InputLabel>Last Name</InputLabel>
-          <OutlinedInput type="text" inputProps={{}} />
-        </FormControl>
+      <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2, marginBottom: 2 }}>
+        <TextField fullWidth label="First Name" name="firstName" />
+        <TextField fullWidth label="Last Name" name="lastName" />
       </Box>
-      <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
-        <FormControl fullWidth sx={{ ...theme.typography.customInput }}>
-          <InputLabel>Email</InputLabel>
-          <OutlinedInput type="text" inputProps={{}} />
-        </FormControl>
-        <FormControl fullWidth sx={{ ...theme.typography.customInput }}>
-          <InputLabel>Role</InputLabel>
-          <Select label="Role">
-            {['admin', 'operator', 'member'].map((item) => (
-              <MenuItem key={item} value={item}>
-                {item}
-              </MenuItem>
-            ))}
-          </Select>
-        </FormControl>
+      <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2, marginBottom: 2 }}>
+        <TextField fullWidth label="Email" />
+        <TextField select fullWidth label="Role">
+          {['admin', 'operator', 'member'].map((item) => (
+            <MenuItem key={item} value={item}>
+              {item.toUpperCase()}
+            </MenuItem>
+          ))}
+        </TextField>
       </Box>
 
-      <FormControl fullWidth>
+      {/* <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Currency</InputLabel>
         <Select
           labelId="demo-simple-select-label"
@@ -133,7 +131,7 @@ function UserCreate() {
             </MenuItem>
           ))}
         </Select>
-      </FormControl>
+      </FormControl> */}
     </Create>
   );
 }
