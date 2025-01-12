@@ -38,10 +38,10 @@ axiosInstance.interceptors.response.use(
 
 export const CustomRestDataProvider = (apiUrl: string, httpClient: any = axiosInstance): DataProvider => ({
   ...dataProvider(apiUrl, httpClient),
-  getList: async ({ resource, pagination }) => {
+  getList: async ({ resource, pagination, filters }) => {
     const url = `${apiUrl}/${resource}?page=${pagination?.current}&limit=${pagination?.pageSize}`;
     const { data } = await httpClient.get(`${url}`);
-    console.log('CustomRestDataProvider getList: ', data);
+    console.log('CustomRestDataProvider getList: ', data, filters);
     return {
       data,
       total: data?.data?.length,

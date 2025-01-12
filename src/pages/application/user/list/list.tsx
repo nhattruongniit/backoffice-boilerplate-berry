@@ -9,11 +9,11 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import TablePagination from '@mui/material/TablePagination';
+import { List } from '@refinedev/mui';
 
 export default function UserList() {
-  const { tableQuery, setCurrent, setPageSize } = useTable<any>({
+  const { tableQuery, setCurrent, setPageSize, pageSize } = useTable<any>({
     resource: 'user',
-    dataProviderName: 'tonyapi',
     pagination: {
       pageSize: 5,
       current: 1,
@@ -34,9 +34,12 @@ export default function UserList() {
     setCurrent(1);
   };
 
+  if (tableQuery?.isLoading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <MainCard title="User List">
-      <h1>Table User</h1>
+    <List title="Table User">
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
@@ -57,15 +60,17 @@ export default function UserList() {
           </TableBody>
         </Table>
       </TableContainer>
-      <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
-        component="div"
-        count={data?.total}
-        rowsPerPage={Number(data?.limit || 5)}
-        page={data?.page - 1}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-    </MainCard>
+      {users.length > 0 && (
+        <TablePagination
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={data?.total}
+          rowsPerPage={pageSize}
+          page={data?.page - 1}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+        />
+      )}
+    </List>
   );
 }

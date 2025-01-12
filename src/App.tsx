@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router';
 import { Refine } from '@refinedev/core';
 import { RefineKbar, RefineKbarProvider } from '@refinedev/kbar';
-import { DocumentTitleHandler, NavigateToResource, UnsavedChangesNotifier } from '@refinedev/react-router';
+import routerBindings, { DocumentTitleHandler, NavigateToResource, UnsavedChangesNotifier } from '@refinedev/react-router';
 import { ErrorComponent, RefineSnackbarProvider, useNotificationProvider } from '@refinedev/mui';
 import dataProvider from '@refinedev/simple-rest';
 
@@ -30,10 +30,11 @@ function App() {
             <RefineSnackbarProvider>
               <Refine
                 dataProvider={{
-                  default: dataProvider(import.meta.env.VITE_APP_BE_API_URL),
-                  tonyapi: restDataProvider,
+                  default: restDataProvider,
+                  todoApi: dataProvider(import.meta.env.VITE_APP_BE_API_URL),
                 }}
                 notificationProvider={useNotificationProvider}
+                routerProvider={routerBindings}
                 resources={[...authenticatedResources, ...publicResources, ...guestResources]}
                 options={{
                   syncWithLocation: true,

@@ -8,8 +8,8 @@ export const PATH_NAME = {
   PORTFOLIO: '/application/user/portfolio',
   PRIVACY_POLICY: '/privacy-policy',
   FORGOT_PASSWORD: '/forgot-password',
-  USER_LIST: 'application/user/list',
-  USER_CREATE: 'application/user/create',
-  USER_EDIT: 'application/`user/edit/:id',
-  USER_SHOW: 'application/user/show/:id',
+  USER_LIST: '/user',
+  USER_CREATE: '/user/create',
+  USER_EDIT: '/`user/edit/:id',
+  USER_SHOW: '/user/show/:id',
 };

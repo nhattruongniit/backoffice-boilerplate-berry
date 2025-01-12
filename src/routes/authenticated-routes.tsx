@@ -12,11 +12,19 @@ const Analytics = Loadable(React.lazy(() => import('@/pages/dashboard/analytics'
 const Mail = Loadable(React.lazy(() => import('@/pages/application/mail')));
 const Portfolio = Loadable(React.lazy(() => import('@/pages/application/user/portfolio')));
 const UserList = Loadable(React.lazy(() => import('@/pages/application/user/list')));
+const UserCreate = Loadable(React.lazy(() => import('@/pages/application/user/create')));
 
 // configs
 import { PATH_NAME } from '@/configs/path-name';
 
 export const authenticatedResources: ResourceProps[] = [
+  {
+    name: 'user',
+    list: '/user',
+    create: '/user/create',
+    edit: '/user/edit/:id',
+    show: '/user/show/:id',
+  },
   {
     name: 'dashboard/statistics',
     list: 'dashboard/statistics',
@@ -28,13 +36,6 @@ export const authenticatedResources: ResourceProps[] = [
   {
     name: 'mail',
     list: PATH_NAME.MAIL,
-  },
-  {
-    name: 'user',
-    list: '/user',
-    create: '/user/create',
-    edit: '/user/edit/:id',
-    show: '/user/show/:id',
   },
 ];
 
@@ -53,7 +54,10 @@ const authenticatedRoutes = () => {
       <Route path={PATH_NAME.ANALYTICS} element={<Analytics />} />
       <Route path={PATH_NAME.MAIL} element={<Mail />} />
       <Route path={PATH_NAME.PORTFOLIO} element={<Portfolio />} />
-      <Route path={PATH_NAME.USER_LIST} element={<UserList />} />
+      <Route path={PATH_NAME.USER_LIST}>
+        <Route index element={<UserList />} />
+        <Route path={PATH_NAME.USER_CREATE} element={<UserCreate />} />
+      </Route>
     </Route>
   );
 };

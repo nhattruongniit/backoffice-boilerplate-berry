@@ -27,7 +27,7 @@ const config = {
   i18n: 'en',
   themeDirection: ThemeDirection.LTR,
   container: false,
-  drawerOpen: true,
+  drawerOpen: false,
 };
 
 // theme constant
